@@ -7,7 +7,7 @@ var fs = require('fs'),
 try {
   fs.mkdirSync(path.join(__dirname, targetDir));
 } catch(e) {
-  
+
 }
 
 var config = {
@@ -39,11 +39,11 @@ function minify(code) {
 module.exports = function(grunt) {
   grunt.registerTask('thorax:release', function() {
     var done = this.async();
-    exec('jake lumbar', function(error, stdout, stderr) {
+    exec('./node_modules/jake/bin/cli.js lumbar', function(error, stdout, stderr) {
       error && process.stdout.write(error);
       stdout && process.stdout.write(stdout);
       stderr && process.stdout.write(stderr);
-  
+
       for (var target in config) {
         var fileList = config[target],
             output = '';
